@@ -91,84 +91,6 @@ lib/
     └── filter_bottom_sheet.dart  # Bottom sheet filtres
 ```
 
-## Installation
-
-### Prérequis
-
-- Flutter SDK 3.0+
-- Dart 3.0+
-- Backend Node.js en cours d'exécution
-- Android Studio ou VS Code avec extensions Flutter
-
-### Étapes
-
-1. Cloner le dépôt
-```bash
-git clone https://github.com/KhadijaSabar/canada-hotels-app.git
-cd canada-hotels-app
-```
-
-2. Installer les dépendances
-```bash
-flutter pub get
-```
-
-3. Configurer l'URL du backend
-
-Dans `lib/config/constants.dart`, modifier `defaultValue` :
-```dart
-static const String baseUrl = String.fromEnvironment(
-  'API_BASE_URL',
-  defaultValue: 'http://YOUR_BACKEND_URL',
-);
-```
-
-Ou lancer avec la variable d'environnement :
-```bash
-flutter run --dart-define=API_BASE_URL=http://localhost:3000
-```
-
-4. Configurer la base de données backend
-```bash
-psql -U postgres -d monitoring_db -f database/schema.sql
-```
-
-5. Lancer l'application
-```bash
-flutter run
-```
-
-## Base de données
-
-Le fichier `database/schema.sql` contient :
-- Création des 5 tables (users, hotels, rooms, bookings, reviews)
-- Index optimisés
-- 5 hôtels CanadaHotels avec données complètes
-- 12 types de chambres avec descriptions et prix
-
-## API Backend requise
-
-Le backend doit exposer les endpoints suivants :
-
-### Authentification
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/auth/profile`
-- `PUT /api/auth/profile`
-
-### Hôtels
-- `GET /api/hotels` (avec filtres: city, country, min_stars, max_price)
-- `GET /api/hotels/search?q=query`
-- `GET /api/hotels/destinations`
-- `GET /api/hotels/:id`
-
-### Réservations (JWT requis)
-- `POST /api/bookings`
-- `GET /api/bookings`
-- `GET /api/bookings/:id`
-- `PATCH /api/bookings/:id/cancel`
-- `GET /api/bookings/availability`
-
 ## Palette de couleurs
 
 | Variable | Valeur | Usage |
@@ -183,18 +105,8 @@ Le backend doit exposer les endpoints suivants :
 | warning | #E08C00 | Alertes et pending |
 | error | #D52B1E | Erreurs |
 
-## Build APK
 
-```bash
-flutter build apk --release --dart-define=API_BASE_URL=https://your-backend.com
 ```
-
-## Tests
-
-```bash
-flutter test
-```
-
 ## Auteur
 
 Khadija Sabar
